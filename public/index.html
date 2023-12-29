@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <style>
+    .theme--light.v-application {
+      background-color: #d1d1d1;
+    }
+
+    .v-btn {
+      color: #4c4c4c;
+    }
+
+    .v-btn:hover {
+      background-color: #85c7f2;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-container fluid fill-height>
+          <v-layout align-center justify-center>
+            <v-flex xs12 sm6 md6 lg6 xl6>
+              <v-app-bar app fixed>
+                <v-toolbar-title>AthiX</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn color="primary" dark>Login</v-btn>
+              </v-app-bar>
+            </v-flex>
+            <v-row class="fill-height" justify-content>
+              <v-col cols="6">
+                <v-btn color="primary" dark block @click="changePage('sale')">Venda</v-btn>
+              </v-col>
+              <v-col cols="6">
+                <v-btn color="primary" dark block @click="changePage('management')">Gestão de Vendas</v-btn>
+              </v-col>
+            </v-row>
+          </v-layout>
+        </v-container>
+      </v-main>
+    </v-app>
+   </div>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: () => ({
+        page: 'home'
+      }),
+      methods: {
+        changePage(page) {
+          this.page = page;
+        }
+      },
+      computed: {
+        showHome() {
+          return this.page === 'home';
+        },
+        showSale() {
+          return this.page === 'sale';
+        },
+        showManagement() {
+          return this.page === 'management';
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
